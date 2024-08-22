@@ -3,141 +3,76 @@ import { Link } from 'react-router-dom'
 import Logo from '../Logo'
 
 function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  const footerLinks = [
+    {
+      title: "Company",
+      links: ["About Us", "Careers", "Partners", "News"]
+    },
+    {
+      title: "Products",
+      links: ["Features", "Pricing", "Integrations", "API"]
+    },
+    {
+      title: "Resources",
+      links: ["Documentation", "Tutorials", "Blog", "Community"]
+    },
+    {
+      title: "Legal",
+      links: ["Terms of Service", "Privacy Policy", "Cookie Policy", "GDPR"]
+    }
+  ]
+
   return (
-    <section className="relative overflow-hidden py-10 bg-gray-400 border-t-2 border-t-black">
-      <div className="relative z-10 mx-auto max-w-7xl px-4">
-        <div className="flex flex-wrap -m-6">
-          <div className="w-full p-6 md:w-1/2 lg:w-5/12">
-            <div className="flex h-full flex-col justify-between">
-              <div className="mb-4 inline-flex items-center">
-                <Logo width="100px" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">
-                  &copy; Copyright 2024. All Rights Reserved by DevUI.
-                </p>
-              </div>
-            </div>
+    <footer className="bg-gray-700 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+          <div className="col-span-2 md:col-span-2">
+            <Link to='/'>
+            <Logo width="150px" className="mb-6" />
+            </Link>
+            <p className="text-sm text-purple-200 mb-4">
+              Innovating the future of development, one line of code at a time.
+            </p>
+            <p className="text-xs text-purple-300">
+              &copy; {currentYear} DevUI. All rights reserved.
+            </p>
           </div>
-          <div className="w-full p-6 sm:w-1/2 md:w-1/4 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-4 text-xs font-semibold uppercase text-gray-500">
-                Company
-              </h3>
-              <ul>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Affiliate Program
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Press the Kit
-                  </Link>
-                </li>
+          {footerLinks.map((column, index) => (
+            <div key={index} className="col-span-1">
+              <h3 className="text-lg font-semibold mb-4 text-yellow-300">{column.title}</h3>
+              <ul className="space-y-2">
+                {column.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    <Link
+                      to="/"
+                      className="text-sm text-purple-200 hover:text-yellow-300 transition-colors duration-300"
+                    >
+                      {link}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
-          </div>
-          <div className="w-full p-6 sm:w-1/2 md:w-1/4 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-4 text-xs font-semibold uppercase text-gray-500">
-                Support
-              </h3>
-              <ul>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Account
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Help
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Customer Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="w-full p-6 sm:w-1/2 md:w-1/4 lg:w-3/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-4 text-xs font-semibold uppercase text-gray-500">
-                Legals
-              </h3>
-              <ul>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Terms &amp; Conditions
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    to="/"
-                  >
-                    Licensing
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          ))}
+        </div>
+        <div className="mt-12 pt-8 border-t border-purple-600 flex flex-col md:flex-row justify-between items-center">
+          <div className="flex space-x-6 mb-4 md:mb-0">
+            {['Facebook', 'Twitter', 'LinkedIn', 'GitHub'].map((social) => (
+              <a key={social} href="/" className="text-purple-300 hover:text-yellow-300 transition-colors duration-300">
+                {social}
+              </a>
+            ))}
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   )
 }
 
 export default Footer
+
+
+
+
